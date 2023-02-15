@@ -295,6 +295,12 @@ if len(SERVER_PORT) == 0:
 else:
     SERVER_PORT = int(SERVER_PORT)
 
+PORT = environ.get('PORT', '')
+if len(PORT) == 0:
+    PORT = 80
+else:
+    SERVER_PORT = int(PORT)
+
 BASE_URL = environ.get('BASE_URL', '').rstrip("/")
 if len(BASE_URL) == 0:
     log_warning('BASE_URL not provided!')
