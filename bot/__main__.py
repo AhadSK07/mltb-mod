@@ -68,7 +68,7 @@ def restart(update, context):
         QbInterval[0].cancel()
         QbInterval.clear()
     clean_all()
-    srun(["pkill", "-9", "-f", "gunicorn|aria2c|qbittorrent-nox|ffmpeg"])
+    srun(["pkill", "-9", "-f", "gunicorn|sax|fux|nud"])
     srun(["python3", "update.py"])
     with open(".restartmsg", "w") as f:
         f.truncate(0)
