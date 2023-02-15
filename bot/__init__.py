@@ -295,12 +295,6 @@ if len(SERVER_PORT) == 0:
 else:
     SERVER_PORT = int(SERVER_PORT)
 
-PORT = environ.get('PORT', '')
-if len(PORT) == 0:
-    PORT = 80
-else:
-    SERVER_PORT = int(PORT)
-
 BASE_URL = environ.get('BASE_URL', '').rstrip("/")
 if len(BASE_URL) == 0:
     log_warning('BASE_URL not provided!')
@@ -380,6 +374,10 @@ if ospath.exists('list_drives.txt'):
                 INDEX_URLS.append(temp[2])
             else:
                 INDEX_URLS.append('')
+
+PORT = environ.get('PORT')
+if PORT:
+    SERVER_PORT = PORT
 
 if BASE_URL:
     Popen(f"gunicorn web.wserver:app --bind 0.0.0.0:{SERVER_PORT}", shell=True)
